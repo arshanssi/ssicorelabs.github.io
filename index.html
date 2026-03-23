@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SSI Core Labs | Giving Plants a Voice</title>
-  <meta name="description" content="SSI Core Labs builds intelligent sensing and control systems where plants, gardens, lawns, and trees communicate through sensors, edge intelligence, motors, and power electronics." />
+  <title>SSI Core Labs | Resilient Plant Intelligence</title>
+  <meta name="description" content="SSI Core Labs is building resilient plant intelligence systems for homes, gardens, greenhouses, and small farms." />
   <style>
     :root {
       --bg: #0b1220;
@@ -13,14 +13,12 @@
       --text: #e8eefc;
       --muted: #b2bfd9;
       --green: #2e7d32;
-      --green-2: #4caf50;
       --blue: #1565c0;
-      --blue-2: #4fc3f7;
       --gold: #f9a825;
       --border: rgba(255,255,255,0.12);
       --shadow: 0 18px 50px rgba(0,0,0,0.28);
       --radius: 22px;
-      --maxw: 1180px;
+      --maxw: 1120px;
     }
 
     * { box-sizing: border-box; }
@@ -29,15 +27,14 @@
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at top right, rgba(79,195,247,0.14), transparent 22%),
-        radial-gradient(circle at left center, rgba(76,175,80,0.12), transparent 24%),
+        radial-gradient(circle at top right, rgba(21,101,192,0.18), transparent 22%),
+        radial-gradient(circle at left center, rgba(46,125,50,0.14), transparent 24%),
         linear-gradient(180deg, #09101b 0%, #0b1220 100%);
       color: var(--text);
       line-height: 1.6;
     }
 
     a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
 
     .container {
       width: min(calc(100% - 32px), var(--maxw));
@@ -49,7 +46,7 @@
       top: 0;
       z-index: 50;
       backdrop-filter: blur(12px);
-      background: rgba(9, 16, 27, 0.78);
+      background: rgba(9, 16, 27, 0.82);
       border-bottom: 1px solid var(--border);
     }
 
@@ -65,20 +62,26 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      font-weight: 700;
-      letter-spacing: 0.4px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      font-size: 1.3rem;
     }
 
     .brand-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
+      width: 38px;
+      height: 38px;
       display: grid;
       place-items: center;
-      background: linear-gradient(135deg, rgba(76,175,80,0.18), rgba(79,195,247,0.18));
-      border: 1px solid rgba(255,255,255,0.14);
-      box-shadow: var(--shadow);
-      font-size: 22px;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      animation: subtlePulse 4s ease-in-out infinite;
+    }
+
+    @keyframes subtlePulse {
+      0% { transform: scale(1); box-shadow: var(--shadow); }
+      50% { transform: scale(1.05); box-shadow: 0 0 18px rgba(46,125,50,0.4); }
+      100% { transform: scale(1); box-shadow: var(--shadow); }
     }
 
     .nav-links {
@@ -89,52 +92,49 @@
       font-size: 0.95rem;
     }
 
-    .nav-links a:hover,
-    .nav-links a:focus { color: var(--text); }
-
     .hero {
-      padding: 72px 0 36px;
+      padding: 84px 0 44px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 30px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
       align-items: center;
     }
 
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--blue-2);
+      display: inline-block;
+      color: #89d8ff;
       font-weight: 700;
       text-transform: uppercase;
-      font-size: 0.8rem;
-      letter-spacing: 1.4px;
+      font-size: 1.1rem;
+      letter-spacing: 1.6px;
       margin-bottom: 14px;
     }
 
-    h1, h2, h3 { line-height: 1.15; margin: 0 0 16px; }
+    h1, h2, h3 { line-height: 1.14; margin: 0 0 16px; }
 
-    h1 {
-      font-size: clamp(2.5rem, 5vw, 4.6rem);
-      max-width: 12ch;
-      margin-bottom: 18px;
+    .highlight {
+      background: linear-gradient(90deg, var(--green), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
     }
+    h1 { font-size: clamp(2rem, 4vw, 3.2rem); max-width: 14ch; }
+    p { margin: 0 0 16px; }
 
-    .hero p {
+    .lead {
       color: var(--muted);
       font-size: 1.08rem;
-      max-width: 64ch;
-      margin: 0 0 26px;
+      max-width: 62ch;
     }
 
     .cta-row {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      margin-bottom: 26px;
+      margin: 26px 0 18px;
     }
 
     .btn {
@@ -162,171 +162,74 @@
 
     .btn:hover { transform: translateY(-1px); }
 
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 22px;
+    .hero-note {
+      color: var(--muted);
+      font-size: 0.95rem;
     }
 
-    .stat-card {
-      background: rgba(255,255,255,0.03);
+    .hero-panel,
+    .card {
+      background: linear-gradient(180deg, rgba(21,35,63,0.78), rgba(16,26,47,0.96));
       border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 18px;
-    }
-
-    .stat-card strong {
-      display: block;
-      font-size: 1.35rem;
-      margin-bottom: 6px;
-    }
-
-    .hero-visual {
-      background: linear-gradient(180deg, rgba(21,35,63,0.92), rgba(16,26,47,0.96));
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 26px;
+      border-radius: var(--radius);
       box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-      min-height: 500px;
     }
 
-    .hero-visual::before {
-      content: "";
-      position: absolute;
-      inset: auto -10% -20% auto;
-      width: 240px;
-      height: 240px;
-      background: radial-gradient(circle, rgba(249,168,37,0.20), transparent 60%);
+    .hero-panel {
+      padding: 24px;
+      min-height: 430px;
     }
 
-    .mini-label {
+    .mini-label,
+    .pill {
       display: inline-block;
-      background: rgba(79,195,247,0.12);
-      color: var(--blue-2);
       padding: 6px 12px;
       border-radius: 999px;
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       font-weight: 700;
-      border: 1px solid rgba(79,195,247,0.22);
-      margin-bottom: 18px;
-    }
-
-    .system-card {
-      background: rgba(255,255,255,0.03);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
       border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 18px;
-      margin-bottom: 16px;
+      background: rgba(255,255,255,0.04);
+      color: #89d8ff;
+      margin-bottom: 14px;
     }
 
-    .system-row {
+    .stack {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 14px;
+      gap: 14px;
+      margin-top: 16px;
     }
 
-    .system-node {
+    .stack-item {
       background: rgba(255,255,255,0.03);
       border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 14px;
-      min-height: 112px;
+      border-radius: 16px;
+      padding: 16px;
     }
 
-    .system-node h4 {
-      margin: 0 0 8px;
-      font-size: 0.98rem;
-    }
+    .stack-item h4 { margin: 0 0 6px; font-size: 1rem; }
+    .stack-item p { color: var(--muted); margin: 0; font-size: 0.95rem; }
 
-    .system-node p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .flow {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 18px;
-      align-items: center;
-    }
-
-    .flow-step {
-      text-align: center;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 12px 10px;
-      font-size: 0.9rem;
-      color: var(--text);
-    }
-
-    .flow-arrow {
-      text-align: center;
-      color: var(--green-2);
-      font-size: 1.3rem;
-      font-weight: 700;
-    }
-
-    section {
-      padding: 34px 0;
-    }
+    section { padding: 34px 0; }
 
     .section-head {
       max-width: 760px;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
-    .section-head p {
-      color: var(--muted);
-      margin: 0;
-    }
+    .section-head p { color: var(--muted); }
 
-    .grid-3, .grid-2, .grid-4 {
+    .grid-2, .grid-3 {
       display: grid;
       gap: 18px;
     }
 
     .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
-    .card {
-      background: linear-gradient(180deg, rgba(21,35,63,0.75), rgba(16,26,47,0.95));
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px;
-      box-shadow: var(--shadow);
-    }
-
-    .card h3 { font-size: 1.2rem; }
-    .card p { color: var(--muted); margin-bottom: 0; }
-
-    .pill {
-      display: inline-block;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 0.76rem;
-      font-weight: 700;
-      letter-spacing: 0.4px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.04);
-      color: var(--blue-2);
-    }
-
-    .impact-grid .card strong {
-      display: block;
-      font-size: 1.5rem;
-      margin-bottom: 8px;
-      color: var(--gold);
-    }
+    .card { padding: 22px; }
+    .card p { color: var(--muted); }
 
     .feature-list {
       margin: 0;
@@ -336,31 +239,12 @@
 
     .feature-list li + li { margin-top: 8px; }
 
-    .product-highlight {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 20px;
-      align-items: stretch;
-    }
-
-    .product-panel {
-      background: linear-gradient(180deg, rgba(46,125,50,0.18), rgba(21,35,63,0.95));
-      border: 1px solid rgba(76,175,80,0.24);
-      border-radius: 24px;
+    .callout {
       padding: 24px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(46,125,50,0.16), rgba(16,26,47,0.96));
+      border: 1px solid rgba(76,175,80,0.24);
       box-shadow: var(--shadow);
-    }
-
-    .product-badge {
-      display: inline-block;
-      font-weight: 700;
-      background: rgba(249,168,37,0.14);
-      color: #ffd66e;
-      border: 1px solid rgba(249,168,37,0.22);
-      border-radius: 999px;
-      padding: 7px 12px;
-      margin-bottom: 14px;
-      font-size: 0.82rem;
     }
 
     .footer {
@@ -379,37 +263,17 @@
       padding: 22px;
     }
 
-    .small {
-      font-size: 0.92rem;
-      color: var(--muted);
-    }
+    .small { font-size: 0.92rem; color: var(--muted); }
 
-    @media (max-width: 980px) {
-      .hero-grid,
-      .product-highlight,
-      .grid-2,
-      .grid-3,
-      .grid-4,
-      .system-row {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-stats {
-        grid-template-columns: 1fr;
-      }
-
-      .flow {
-        grid-template-columns: 1fr;
-      }
-
-      .flow-arrow { transform: rotate(90deg); }
+    @media (max-width: 920px) {
+      .hero-grid, .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      h1 { max-width: 100%; }
     }
 
     @media (max-width: 720px) {
-      .nav { align-items: flex-start; flex-direction: column; }
-      h1 { max-width: 100%; }
+      .nav { flex-direction: column; align-items: flex-start; }
       .footer-box { flex-direction: column; }
-      .hero { padding-top: 40px; }
+      .hero { padding-top: 44px; }
     }
   </style>
 </head>
@@ -417,15 +281,13 @@
   <header class="topbar">
     <div class="container nav">
       <a class="brand" href="#home" aria-label="SSI Core Labs Home">
-        <span class="brand-mark">∞</span>
+        
         <span>SSI Core Labs</span>
       </a>
       <nav class="nav-links" aria-label="Primary navigation">
-        <a href="#vision">Vision</a>
-        <a href="#technology">Technology</a>
-        <a href="#impact">Impact</a>
-        <a href="#product">Product</a>
-        <a href="#applications">Applications</a>
+        <a href="#about">About</a>
+        <a href="#focus">Focus</a>
+        <a href="#future">Future</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -436,259 +298,121 @@
       <div class="container hero-grid">
         <div>
           <div class="eyebrow">Sustainable Systems Innovation Core Labs</div>
-          <h1>Giving Plants a Voice Through Intelligent Systems</h1>
-          <p>
-            SSI Core Labs builds sensing, control, and actuation platforms where plants, lawns, gardens,
-            and trees communicate their needs through sensors, embedded intelligence, motors, and power electronics.
-            The result is a closed-loop system that saves water, reduces fertilizer waste, improves crop yield,
-            lowers disease risk, and supports long-term sustainability.
+          <h1><span class="highlight">Resilient</span> Plant Intelligence for a <span class="highlight">Self-Reliant</span> World</h1>
+          <p class="lead">
+            SSI Core Labs is building a new class of intelligent systems for lawns, gardens, greenhouses,
+            and small farms. Our focus is simple: help people grow more with fewer resources while reducing
+            dependence on fragile infrastructure.
+          </p>
+          <p class="lead">
+            We are developing technologies designed for local resilience, resource efficiency, and self-reliance,
+            with a long-term vision for more sustainable homes and communities.
           </p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="#technology">Explore Technology</a>
-            <a class="btn btn-secondary" href="#contact">Partner With SSI</a>
+            <a class="btn btn-primary" href="#contact">Contact Us</a>
+            <a class="btn btn-secondary" href="#about">Learn More</a>
           </div>
-          <div class="hero-stats">
-            <div class="stat-card">
-              <strong>Water</strong>
-              Precision irrigation driven by plant and soil signals.
-            </div>
-            <div class="stat-card">
-              <strong>Health</strong>
-              Earlier stress detection to reduce crop and lawn disease.
-            </div>
-            <div class="stat-card">
-              <strong>Yield</strong>
-              Smarter action for better productivity, profit, and resilience.
-            </div>
-          </div>
+          <p class="hero-note">Currently in concept and early development.</p>
         </div>
 
-        <div class="hero-visual" aria-label="SSI Core Labs system diagram">
-          <div class="mini-label">Closed-Loop Plant Intelligence</div>
-
-          <div class="system-card">
-            <h3>Plants communicate. Systems respond.</h3>
-            <p class="small">
-              A system-level architecture that links plants, environment, sensing, decision logic, and automated action.
-            </p>
-            <div class="flow">
-              <div class="flow-step">Plants</div>
-              <div class="flow-arrow">→</div>
-              <div class="flow-step">Sensors</div>
-              <div class="flow-arrow">→</div>
-              <div class="flow-step">Intelligence</div>
-              <div class="flow-arrow">→</div>
-              <div class="flow-step">Actuation</div>
-              <div class="flow-arrow">→</div>
-              <div class="flow-step">Sustainability</div>
+        <div class="hero-panel">
+          <div class="mini-label">What We Believe</div>
+          <h3>Plants, people, and systems should work together more intelligently.</h3>
+          <p class="small">
+            We believe future growing systems should be efficient, resilient, and practical to deploy across everyday environments.
+          </p>
+          <div class="stack">
+            <div class="stack-item">
+              <h4>Use Less</h4>
+              <p>Lower water, fertilizer, and energy waste through smarter system design.</p>
             </div>
-          </div>
-
-          <div class="system-row">
-            <div class="system-node">
-              <h4>Soil Sensing</h4>
-              <p>Moisture, nutrients, pH, and thermal conditions.</p>
+            <div class="stack-item">
+              <h4>Depend Less</h4>
+              <p>Support operation with reduced reliance on grid electricity, internet, and cloud infrastructure.</p>
             </div>
-            <div class="system-node">
-              <h4>Plant Signals</h4>
-              <p>Stress, leaf temperature, disease indicators, and growth state.</p>
-            </div>
-            <div class="system-node">
-              <h4>Edge Intelligence</h4>
-              <p>Embedded algorithms interpret plant and environmental needs.</p>
-            </div>
-            <div class="system-node">
-              <h4>Motor Action</h4>
-              <p>Pumps, valves, dosing, airflow, and power-electronic control.</p>
+            <div class="stack-item">
+              <h4>Grow More</h4>
+              <p>Enable healthier plant systems and more resilient local food production.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="vision">
+    <section id="about">
       <div class="container">
         <div class="section-head">
-          <div class="pill">Vision</div>
-          <h2>Plants, gardens, lawns, and trees should not stay silent.</h2>
+          <div class="pill">About</div>
+          <h2>A focused vision with broad long-term potential</h2>
           <p>
-            SSI Core Labs envisions living systems that continuously express their needs through data,
-            and engineered systems that respond with the right action at the right time.
-            This is not just monitoring. It is bi-directional communication between nature and technology.
+            SSI Core Labs is exploring resilient plant-system technologies that can support homes, growers,
+            and communities facing rising uncertainty in resources, infrastructure, and supply conditions.
           </p>
         </div>
         <div class="grid-3">
           <article class="card">
-            <h3>Listen</h3>
-            <p>
-              Capture soil, climate, and plant-health signals before visible damage appears.
-            </p>
+            <h3>Resource Efficiency</h3>
+            <p>Reduce waste and improve decision quality in plant-related systems.</p>
           </article>
           <article class="card">
-            <h3>Interpret</h3>
-            <p>
-              Fuse sensor inputs into meaningful plant stress, water demand, and health intelligence.
-            </p>
+            <h3>Local Resilience</h3>
+            <p>Support more self-reliant growing environments across residential and small-scale settings.</p>
           </article>
           <article class="card">
-            <h3>Act</h3>
-            <p>
-              Trigger motors, valves, pumps, and control systems to save resources and improve outcomes.
-            </p>
+            <h3>Practical Intelligence</h3>
+            <p>Combine sensing, control, and efficient system design in a simple, deployable form.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="technology">
+    <section id="focus">
       <div class="container">
         <div class="section-head">
-          <div class="pill">Technology Platform</div>
-          <h2>Built as a complete sensing-to-actuation ecosystem</h2>
+          <div class="pill">Current Focus</div>
+          <h2>Designed for real-world environments</h2>
           <p>
-            SSI Core Labs combines electrical engineering, embedded intelligence, and sustainability into one integrated architecture.
+            Our early work is centered on intelligent systems for residential and small-scale growing applications,
+            with an emphasis on resilience, low-resource operation, and future-ready automation.
           </p>
         </div>
-
-        <div class="grid-4">
+        <div class="grid-2">
           <article class="card">
-            <h3>Sensor Layer</h3>
+            <h3>Applications</h3>
             <ul class="feature-list">
-              <li>Soil moisture and nutrient monitoring</li>
-              <li>Temperature, humidity, and light sensing</li>
-              <li>Plant stress and disease indicators</li>
+              <li>Lawns and outdoor gardens</li>
+              <li>Indoor gardens and controlled environments</li>
+              <li>Greenhouses and protected growing systems</li>
+              <li>Small farms and local food ecosystems</li>
             </ul>
           </article>
           <article class="card">
-            <h3>Edge Intelligence</h3>
+            <h3>Design Principles</h3>
             <ul class="feature-list">
-              <li>Embedded analytics at the device level</li>
-              <li>Plant Stress Index and system diagnostics</li>
-              <li>Low-latency local decision making</li>
-            </ul>
-          </article>
-          <article class="card">
-            <h3>Actuation Layer</h3>
-            <ul class="feature-list">
-              <li>Pumps and motor-driven irrigation</li>
-              <li>Valves, nutrient dosing, and flow control</li>
-              <li>Power electronics for efficient energy delivery</li>
-            </ul>
-          </article>
-          <article class="card">
-            <h3>User Interface</h3>
-            <ul class="feature-list">
-              <li>Actionable plant health insights</li>
-              <li>Alerts for drought, disease, and waste</li>
-              <li>Dashboard for homeowners, farms, and landscape teams</li>
+              <li>Low-resource operation</li>
+              <li>Offline-first and local intelligence</li>
+              <li>Energy-aware system architecture</li>
+              <li>Scalable vision from home to community use</li>
             </ul>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="impact">
+    <section id="future">
       <div class="container">
-        <div class="section-head">
-          <div class="pill">Impact</div>
-          <h2>Engineering outcomes that matter for people, land, and ecosystems</h2>
+        <div class="callout">
+          <div class="pill">Future Direction</div>
+          <h2>We are building toward a larger platform for resilient growing systems.</h2>
           <p>
-            The SSI model treats plants, environment, and control systems as one connected system,
-            enabling measurable sustainability and productivity benefits.
+            SSI Core Labs is intentionally sharing only a limited public view at this stage.
+            We are actively refining the underlying product direction, system architecture,
+            and long-term roadmap.
           </p>
-        </div>
-
-        <div class="grid-4 impact-grid">
-          <article class="card">
-            <strong>Water Savings</strong>
-            <p>Target irrigation only where and when it is actually needed.</p>
-          </article>
-          <article class="card">
-            <strong>Fertilizer Efficiency</strong>
-            <p>Reduce over-application through data-driven dosing and control.</p>
-          </article>
-          <article class="card">
-            <strong>Disease Reduction</strong>
-            <p>Detect stress earlier and intervene before plant damage escalates.</p>
-          </article>
-          <article class="card">
-            <strong>Higher Yield</strong>
-            <p>Improve crop productivity, landscape quality, and customer profitability.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="product">
-      <div class="container">
-        <div class="section-head">
-          <div class="pill">First Product Direction</div>
-          <h2>A launch platform designed for practical deployment</h2>
           <p>
-            Start simple, solve a real problem, and build toward a scalable intelligence platform.
+            We welcome conversations with early supporters, collaborators, customers, and investors
+            who are interested in sustainability, food security, and resilient local systems.
           </p>
-        </div>
-
-        <div class="product-highlight">
-          <div class="product-panel">
-            <div class="product-badge">Concept Product</div>
-            <h3>Leaf0 Sensor Node</h3>
-            <p>
-              A compact sensor unit that listens to soil and environmental signals, then delivers clear action guidance
-              for gardens, lawns, and plant-care systems.
-            </p>
-            <ul class="feature-list">
-              <li>Soil moisture and thermal sensing</li>
-              <li>Ambient temperature, humidity, and light monitoring</li>
-              <li>Future-ready integration with Hydro∞ irrigation control</li>
-            </ul>
-          </div>
-
-          <div class="grid-2">
-            <article class="card">
-              <h3>Residential Gardens</h3>
-              <p>Prevent overwatering, detect plant stress sooner, and reduce manual guesswork.</p>
-            </article>
-            <article class="card">
-              <h3>Lawns and Landscaping</h3>
-              <p>Support healthier lawns with lower water use and better maintenance efficiency.</p>
-            </article>
-            <article class="card">
-              <h3>Greenhouses</h3>
-              <p>Enable more precise irrigation and environmental control in enclosed growing systems.</p>
-            </article>
-            <article class="card">
-              <h3>Forestry and Fire Risk</h3>
-              <p>Extend the same architecture toward dryness monitoring and wildfire prevention systems.</p>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="applications">
-      <div class="container">
-        <div class="section-head">
-          <div class="pill">Applications</div>
-          <h2>One core architecture, multiple sustainability domains</h2>
-          <p>
-            SSI Core Labs is designed to scale from individual gardens to large agricultural and environmental systems.
-          </p>
-        </div>
-
-        <div class="grid-3">
-          <article class="card">
-            <h3>Smart Lawns</h3>
-            <p>Measure drought stress, improve maintenance timing, and reduce water waste.</p>
-          </article>
-          <article class="card">
-            <h3>Precision Agriculture</h3>
-            <p>Increase crop yield and resource efficiency through data-driven irrigation and nutrient control.</p>
-          </article>
-          <article class="card">
-            <h3>Tree and Forest Monitoring</h3>
-            <p>Track vegetation dryness, tree stress, and environmental risk across larger landscapes.</p>
-          </article>
         </div>
       </div>
     </section>
@@ -697,28 +421,24 @@
       <div class="container">
         <div class="section-head">
           <div class="pill">Contact</div>
-          <h2>Let’s build intelligent living systems together</h2>
+          <h2>Interested in the future of resilient plant systems?</h2>
           <p>
-            SSI Core Labs is developing technologies at the intersection of sensing, control, power electronics, and sustainability.
+            We are open to early conversations with potential customers, collaborators, pilot partners,
+            and aligned investors.
           </p>
         </div>
-
         <div class="grid-2">
           <article class="card">
-            <h3>For customers and partners</h3>
-            <p>
-              Interested in smart plant systems, sustainability technology, or pilot collaborations?
-              Reach out to start the conversation.
-            </p>
-            <p><strong>Email:</strong> hello@ssicorelabs.com</p>
+            <h3>General Inquiries</h3>
+            <p>Email us to learn more or express interest in future updates.</p>
+            <p><strong>Email:</strong> sales@ssicorelabs.com</p>
           </article>
           <article class="card">
-            <h3>For investors and collaborators</h3>
+            <h3>Early Interest</h3>
             <p>
-              SSI Core Labs is building a long-term platform where plants communicate, systems respond,
-              and sustainability becomes measurable and scalable.
+              If you are exploring resilient growing systems, local food security, or sustainable infrastructure,
+              we would be glad to connect.
             </p>
-            <p><strong>Location:</strong> Detroit Metro Area, Michigan</p>
           </article>
         </div>
       </div>
@@ -729,11 +449,9 @@
     <div class="container footer-box">
       <div>
         <strong>SSI Core Labs</strong>
-        <p class="small">Giving plants a voice through sensing, control, and sustainable system design.</p>
+        <p class="small">Grow more. Use less. Depend less.</p>
       </div>
-      <div class="small">
-        © 2026 SSI Core Labs. All rights reserved.
-      </div>
+      <div class="small">© 2026 SSI Core Labs. All rights reserved.</div>
     </div>
   </footer>
 </body>
